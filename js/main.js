@@ -8,11 +8,14 @@ $(document).ready(function () {
 			success: function (data) {
 	
 				var covid_data = data.split(/\r?\n|\r/);
-				var table_data = '<table class="table table-bordered table-striped">';
+				var table_head = '<table class="table table-bordered table-striped">';
+				var table_data = table_head;
+				var resume_data = table_head;
 	
 				for (var count = 0; count < covid_data.length; count++) {
 	
 					var cell_data = covid_data[count].split(",");
+
 					table_data += '<tr>';
 	
 					for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
@@ -27,12 +30,43 @@ $(document).ready(function () {
 					}
 	
 					table_data += '</tr>';
+
+					resume_data += '<tr>';
+
+					if (count == 0) {
+						resume_data += '<th>Country / Province</th>';
+						resume_data += '<th>Geo</th>';
+						resume_data += '<th>' + cell_data[cell_count-7] + '</th>';
+						resume_data += '<th>' + cell_data[cell_count-6] + '</th>';
+						resume_data += '<th>' + cell_data[cell_count-5] + '</th>';
+						resume_data += '<th>' + cell_data[cell_count-4] + '</th>';
+						resume_data += '<th>' + cell_data[cell_count-3] + '</th>';
+						resume_data += '<th>' + cell_data[cell_count-2] + '</th>';
+						resume_data += '<th>' + cell_data[cell_count-1] + '</th>';
+					}
+					else{
+						resume_data += '<td>' + cell_data[1] + " " + cell_data[0] + '</td>';
+						resume_data += '<td><a href="https://www.openstreetmap.org/#map=19/' + 
+										cell_data[2] + '/' + cell_data[3] + '" target="_blank">' +
+										'<i class="fa fa-map-marker" style="font-size:24px;color:blue"></i></a></td>';
+						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-7] + '</td>';
+						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-6] + '</td>';
+						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-5] + '</td>';
+						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-4] + '</td>';
+						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-3] + '</td>';
+						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-2] + '</td>';
+						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-1] + '</td>';
+					}
+	
+					resume_data += '</tr>';
 	
 				}
 	
 				table_data += '</table>';
-	
 				$('#covid19_table').html(table_data);
+
+				resume_data += '</table>';
+				$('#resume_table').html(resume_data);
 
 			}
 		});
@@ -40,4 +74,22 @@ $(document).ready(function () {
 
 	$('#reaload_page')
 
+	$(function() {
+        /** This code runs when everything has been loaded on the page */
+        /* Inline sparklines take their values from the contents of the tag */
+        $('.inlinesparkline').sparkline(); 
+
+        /* Sparklines can also take their values from the first argument passed to the sparkline() function */
+        var myvalues = [10,8,5,7,4,4,1];
+        $('.dynamicsparkline').sparkline(myvalues);
+
+        /* The second argument gives options such as specifying you want a bar chart */
+        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
+
+        /* Use 'html' instead of an array of values to pass options to a sparkline with data in the tag */
+        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
+
+	});
+
 });
+
