@@ -46,7 +46,7 @@ $(document).ready(function () {
 					}
 					else{
 						resume_data += '<td>' + cell_data[1] + " " + cell_data[0] + '</td>';
-						resume_data += '<td><a href="https://www.openstreetmap.org/#map=19/' + 
+						resume_data += '<td><a href="https://www.openstreetmap.org/#map=5/' + 
 										cell_data[2] + '/' + cell_data[3] + '" target="_blank">' +
 										'<i class="fa fa-map-marker" style="font-size:24px;color:blue"></i></a></td>';
 						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-7] + '</td>';
