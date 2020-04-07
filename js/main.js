@@ -21,10 +21,10 @@ $(document).ready(function () {
 					for (var cell_count = 0; cell_count < cell_data.length; cell_count++) {
 	
 						if (count === 0) {
-							table_data += '<th>' + cell_data[cell_count] + '</th>';
+							table_data += '<th style="text-align: center;">' + cell_data[cell_count] + '</th>';
 						}
 						else {
-							table_data += '<td>' + cell_data[cell_count] + '</td>';
+							table_data += '<td style="text-align: center;">' + cell_data[cell_count] + '</td>';
 						}
 	
 					}
@@ -43,19 +43,29 @@ $(document).ready(function () {
 						resume_data += '<th>' + cell_data[cell_count-3] + '</th>';
 						resume_data += '<th>' + cell_data[cell_count-2] + '</th>';
 						resume_data += '<th>' + cell_data[cell_count-1] + '</th>';
+						resume_data += '<th> Growth</th>';
 					}
 					else{
 						resume_data += '<td>' + cell_data[1] + " " + cell_data[0] + '</td>';
-						resume_data += '<td><a href="https://www.openstreetmap.org/#map=5/' + 
+						resume_data += '<td style="text-align: center;"><a href="https://www.openstreetmap.org/#map=5/' + 
 										cell_data[2] + '/' + cell_data[3] + '" target="_blank">' +
 										'<i class="fa fa-map-marker" style="font-size:24px;color:blue"></i></a></td>';
 						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-7] + '</td>';
-						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-6] + '</td>';
-						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-5] + '</td>';
-						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-4] + '</td>';
-						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-3] + '</td>';
-						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-2] + '</td>';
-						resume_data += '<td style="text-align:  right;">' + cell_data[cell_count-1] + '</td>';
+						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-6] + '</td>';
+						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-5] + '</td>';
+						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-4] + '</td>';
+						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-3] + '</td>';
+						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-2] + '</td>';
+						resume_data += '<td style="text-align: right;">' + cell_data[cell_count-1] + '</td>';
+
+						var avgqt = ((((parseFloat(cell_data[cell_count-6]) / parseFloat(cell_data[cell_count-7]))-1)*100) +
+									 (((parseFloat(cell_data[cell_count-5]) / parseFloat(cell_data[cell_count-6]))-1)*100) +
+									 (((parseFloat(cell_data[cell_count-4]) / parseFloat(cell_data[cell_count-5]))-1)*100) +
+									 (((parseFloat(cell_data[cell_count-3]) / parseFloat(cell_data[cell_count-4]))-1)*100) +
+									 (((parseFloat(cell_data[cell_count-2]) / parseFloat(cell_data[cell_count-3]))-1)*100) +
+									 (((parseFloat(cell_data[cell_count-1]) / parseFloat(cell_data[cell_count-2]))-1)*100))/6;
+
+						resume_data += '<td style="text-align:  right;">' + avgqt.toFixed(2) + '% </td>';
 					}
 	
 					resume_data += '</tr>';
