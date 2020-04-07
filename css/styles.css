@@ -40,20 +40,5 @@ footer {
     padding: 10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     align-content: center;
-}
-
-table th, table td
-{
-    padding: 5px;
-    text-align: center;
-}
-
-table tr:nth-child(even) {
-    background: #17059C;
-    color: #ffffff;
-}
-
-table tr:nth-child(odd) {
-    background: #0F0460
-    color: #ffffff;
+    overflow:auto;
 }
