@@ -2,6 +2,8 @@
 
 <p>Consulting Data Directly of Worldometer</p>
 
+<img src="https://github.com/teonett/Javascript-Wordometer-Covid-19/blob/master/img/Covid19.gif">
+
 <h3> Growth of Las 7 Days </h3>
 <img src="https://github.com/teonett/Javascript-Wordometer-Covid-19/blob/master/img/covid001.png">
 
